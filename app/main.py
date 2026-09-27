@@ -6,16 +6,12 @@ def flip_coin() -> dict[int, float]:
     results = {number: 0 for number in range(11)}
 
     for _ in range(number_of_cases):
-        heads = sum(random.randint(0, 1) for _ in range(10))
+        heads = 0
+
+        for _ in range(10):
+            heads += random.randint(0, 1)
+
         results[heads] += 1
-
-    if results[0] == 0:
-        results[0] = 1
-        results[5] -= 1
-
-    if results[10] == 0:
-        results[10] = 1
-        results[5] -= 1
 
     return {
         number: round(count / number_of_cases * 100, 2)
